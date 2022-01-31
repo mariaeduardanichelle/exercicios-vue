@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>
+        {{ titulo }}
+        </h1>
+        <hr>
+        <p>{{ mensagem }}</p>
+        <hr>
+            <p v-if="venceu">Você venceu!</p>
+            <p v-else-if="perdeu">Você perdeu!</p>
+            <p v-else=>Ocorreu um empate!</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    titulo: "Renderização condicional",
+                    mensagem: "Minha mensagem",
+                    venceu: false,
+                    perdeu: false,
+                }
+            }
+        })
+    </script>
+</body>
+</html>

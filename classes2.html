@@ -1,0 +1,67 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Aula 16-->
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>
+            {{titulo}}
+        </h1>
+        <hr>
+        <!-- <div class="quadro" :class="{negrito: importante, urgente: urgente}"> poderia ser assim -->
+        <!-- <div class="quadro" :class="{negrito: importante, urgente}"></div> -->
+        <div class="quadro" :class="classeQuadro">
+            Exemplo de classes CSS
+        </div> <!-- :class = v-bind:class -->
+        <div class="quadro" :class="classeQuadroComputado">
+            Exemplo de classes CSS 2
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    titulo: "Interligação de classes 2",
+                    importante: false,
+                    classeQuadro: {
+                        negrito: true, 
+                        urgente: true
+                    },
+                } 
+            },
+            computed: {
+                classeQuadroComputado(){
+                    return{
+                        negrito: this.importante, 
+                        urgente: true,
+                    }
+                },
+            },
+        })
+    </script>
+    <style>
+        .negrito{
+            font-weight: bold;
+        }
+
+        .urgente{
+            color: red;
+        }
+
+        .quadro{
+            width: 100px;
+            height: 100px;
+            border-radius: 10px; /* isso deixa a borda arrendodada  */
+            background-color: darkgray;
+            padding: 40px; /* define uma a distância entre o conteúdo de um elemento e suas bordas */
+            margin: 10px;
+                }
+    </style>
+</body>
+</html>

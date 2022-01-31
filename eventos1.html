@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>
+        {{ titulo }}
+        </h1>
+        <hr>
+        <p>{{ mensagem }}</p>
+        <button v-on:click="inverterMensagem">Inverter mensagem</button> 
+        <hr>
+        <p>Usando propriedades computadas</p>
+        <p>Mensagem invertida: {{mensagemInvertida }} </p>
+        <hr>
+        Valor atual: {{ valor }}
+        <button @click="adicionar">Adicionar</button> <!-- @click é abreviação de v-on:click --> 
+        <button @click.exact="adicionar">Adicionar2</button>
+        <button @click.ctrl="diminuir">Diminuir</button>
+        <button @click.ctrl.exact="diminuir">Diminuir2</button>
+        <hr>
+        <input type="text"@keyup= "alterarMensagem">
+        <input type="text"@keyup.enter= "alterarMensagem">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    titulo: "Métodos",
+                    mensagem: "Minha mensagem",
+                    valor: 15,
+                } 
+            },
+            methods: {
+                inverterMensagem() {
+                    this.mensagem = this.mensagem.split('').reverse().join('')
+                }, 
+                adicionar(){
+                    this.valor++
+                },
+                diminuir(){
+                    this.valor--
+                },
+                alterarMensagem(event){
+                    this.mensagem = event.target.value
+                }
+            },
+            computed: {
+                mensagemInvertida() {
+                    return this.mensagem.split('').reverse().join('')
+                } 
+            }
+        })
+    </script>
+</body>
+</html>

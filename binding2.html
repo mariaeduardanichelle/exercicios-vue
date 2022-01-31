@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>
+        {{ titulo }}
+        </h1>
+        <hr>
+        {{ mensagem }}
+        <hr>
+        <input v-model="mensagem" type="text"> <!--A diretiva v-model é uma simplificação do binding-->
+        <hr> 
+       <a target="_blank" :href="url"> Link </a> para o site do VUE
+       <hr>
+       <button :disabled="disabled">Novo botão</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    titulo: "Binding",
+                    mensagem: "Minha mensagem",
+                    valor: 15,
+                    url: "https://br.vuejs.org",
+                    disabled: true
+                } 
+            },
+        })
+    </script>
+</body>
+</html>

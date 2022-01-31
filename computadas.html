@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>
+        {{ titulo }}
+        </h1>
+        <hr>
+        <p>{{ mensagem }}</p>
+        <hr>
+        <p>Usando métodos</p>
+        <p>Mensagem invertida: {{mensagemInvertidaComMetodos() }} </p>
+        <hr>
+        <p>Usando propriedades computadas</p>
+        <p>Mensagem invertida: {{mensagemInvertida }} </p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    titulo: "Métodos",
+                    mensagem: "Minha mensagem",
+                    valor: 15,
+                } 
+            },
+            methods: {
+                mensagemInvertidaComMetodos() {
+                    return this.mensagem.split('').reverse().join('')
+                } // se tivesse varios elementos e se qualquer um deles sofreu alteração o metodo sera executado novamente
+            },
+            computed: {
+                mensagemInvertida() {
+                    return this.mensagem.split('').reverse().join('')
+                } // só será executada quando algum elemento dentro do calculo dela sofrer alteração, nesse caso somente se mensagem sofrer alteração vai ser computada.
+            }
+        })
+    </script>
+</body>
+</html>

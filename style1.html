@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Aula 17-->
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>
+            {{titulo}}
+        </h1>
+        <hr>
+        <div class="quadro" :style="{color: minhaCor, fontSize: tamanho+'px'}">
+            <!-- <div class="quadro" :style="{color: minhaCor, fontSize: tamanho}"> -->
+            Exemplo de style inline
+        </div>
+        <hr>
+        <div class="quadro" :style="estiloInline">
+            Exemplo de style inline computado
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    titulo: "Interligação de style inline 1",
+                    minhaCor: 'red',
+                    tamanho: 20, // 20px,
+                }
+            },
+            computed:{
+                estiloInline(){
+                    return {
+                        color: 'blue',
+                        fontSize: '20px',
+                    }
+                }
+            }
+        })
+    </script>
+    <style>
+        .quadro{
+            width: 100px;
+            height: 100px;
+            border-radius: 10px; /* isso deixa a borda arrendodada  */
+            background-color: darkgray;
+            padding: 40px; /* define uma a distância entre o conteúdo de um elemento e suas bordas */
+            margin: 10px;
+                }
+    </style>
+</body>
+</html>

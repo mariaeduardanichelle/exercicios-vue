@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>
+        {{ titulo }}
+        </h1>
+        <hr>
+        <p>{{ mensagem }}</p>
+        <hr>
+        <p>Renderização condicional com v-show</p>
+        <div v-show="detalhes">
+            <p>Tamanho da mensagem: {{mensagem.lenght}}</p>
+            <p>Mensagem em maiúsculo: {{mensagem.toUpperCase() }}</p>
+        </div>
+        <hr>
+        <p>Renderização condicional com v-if</p>
+        <div v-if="detalhes">
+            <p>Tamanho da mensagem: {{mensagem.lenght}}</p>
+            <p>Mensagem em maiúsculo: {{mensagem.toUpperCase() }}</p>
+        </div>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    titulo: "Renderização condicional",
+                    mensagem: "Minha mensagem",
+                    detalhes: true
+                }
+            }
+        })
+    </script>
+</body>
+</html>
